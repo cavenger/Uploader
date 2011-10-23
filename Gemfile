@@ -6,7 +6,9 @@ gem 'rails', '3.1.1'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-
+gem 'haml'
+gem 'devise'
+gem 'kaminari'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,14 +21,26 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+#gem 'ruby-debug19', :require => 'ruby-debug'
 
+group :development, :test do
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'haml-rails'
+  gem 'hpricot'
+  gem 'ruby_parser'
+  gem 'web-app-theme'
+end
+
+gem 'carrierwave', :git => "https://github.com/jnicklas/carrierwave.git"
+gem 'mini_magick'
+gem 'plupload-rails3'

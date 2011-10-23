@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-BoapixUpload::Application.load_tasks
+Uploader::Application.load_tasks
