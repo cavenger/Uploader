@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Payload:
+  = @photo.payload
+%p
+  %b Title:
+  = @photo.filename
+
+= link_to 'Edit', edit_photo_path(@photo)
+\|
+= link_to 'Back', photos_path

@@ -1,0 +1,23 @@
+%h1 Listing photos
+
+%table
+  %tr
+    %th name
+    %th image
+    %th
+    %th
+    %th
+
+  - @photos.each do |photo|
+    %tr
+      %td= photo.name
+      %td
+        %img#thumb{:src => photo.file.url, :alt => "My Pic"}
+        = photo.file.url
+      %td= link_to 'Show', photo
+      %td= link_to 'Edit', edit_photo_path(photo)
+      %td= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Photo', new_photo_path

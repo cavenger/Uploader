@@ -1,0 +1,44 @@
+<script type="text/javascript">
+ $(function(){
+  var uploader = new plupload.Uploader({
+   runtimes : "gears,silverlight,flash,html5",
+   browse_button : 'pickfiles',
+   container : "uploader",
+   max_file_size : '10mb',
+   url : "/admin/assets",
+   flash_swf_url: "/javascripts/plupload.flash.swf",
+   silverlight_xap_url: "/javascripts/plupload.silverlight.xap",
+   multipart: true,
+   multipart_params: {
+    "authenticity_token" : '<%= form_authenticity_token %>'
+   }
+  });
+
+  uploader.bind('Init', function(up, params) {
+       $('#filelist').html("<div>Current runtime: " + params.runtime + "</div>");
+  });
+
+  uploader.bind('FilesAdded', function(up, files) {
+    $.each(files, function(i, file) {
+           $('#filelist').append(
+               '<div id="' + file.id + '">' +
+               'File: ' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+               '</div>'
+           );
+       });
+   });
+
+   uploader.bind('UploadProgress', function(up, file) {
+       $('#' + file.id + " b").html(file.percent + "%");
+   });
+
+   $('#uploadfiles').click(function(e) {
+       uploader.start();
+       e.preventDefault();
+   });
+
+   uploader.init();
+ });
+</script>
+
+<div id="uploader"></div>
